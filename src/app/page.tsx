@@ -1,65 +1,84 @@
-import Image from "next/image";
+import Link from 'next/link';
 
-export default function Home() {
+export default function Page() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div
+      className="min-h-screen bg-cover bg-center flex flex-col items-center justify-center"
+      style={{
+        backgroundImage: "url('/images/image.png')",
+        fontFamily: "SF Pro Display, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+      }}
+    >
+      <div className="max-w-6xl mx-auto px-4 py-20 text-center text-white">
+        <div className="mb-10">
+          <h1 className="text-5xl md:text-6xl font-light tracking-tight">
+            Talk to AI
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-lg md:text-2xl mt-3 font-extralight tracking-widest text-white/80">
+            Fale com uma inteligência Artificial ou faça upload de arquivos
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="p-12 text-center text-white-900 mb-10">
+
+          <div className="flex gap-4 justify-center flex-wrap">
+
+            <Link
+              href="/chat"
+              className="border border-white/40 text-white px-8 py-4 rounded-2xl font-light text-lg hover:bg-white/10 transition-all backdrop-blur-sm"
+            >
+              Type to AI
+            </Link>
+
+            <Link
+              href="/upload"
+              className="border border-white/40 text-white px-8 py-4 rounded-2xl font-light text-lg hover:bg-white/10 transition-all backdrop-blur-sm"
+            >
+              Upload
+            </Link>
+
+            
+          </div>
         </div>
-      </main>
+
+        <div className="flex justify-center mb-20">
+          <div className="backdrop-blur-2xl bg-white/10 border border-white/20 rounded-2xl shadow-2xl p-10 max-w-lg">
+            <h2 className="text-4xl font-light tracking-tight text-white mb-4">
+              Powered by Gemma 3
+            </h2>
+            <p className="text-white/70 text-lg leading-relaxed">
+              Respostas com Gemma3 local, oferecendo conversas naturais e contextualmente relevantes.
+            </p>
+          </div>
+        </div>
+
+        
+
+
+        <div className="mt-20 text-center">
+          <h3 className="text-2xl font-light text-white/90 mb-10 tracking-wide">
+            Tecnologias Utilizadas
+          </h3>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { icon: "", name: "Next.js", desc: "Frontend" },
+              { icon: "", name: "NestJS", desc: "Backend" },
+              { icon: "", name: "ChromaDB", desc: "Vector Store" },
+              { icon: "", name: "Gemma 3", desc: "LLM Local" },
+            ].map((item) => (
+              <div
+                key={item.name}
+                className="backdrop-blur-sm border-t border-white/20  rounded-2xl p-6 shadow-md text-white"
+              >
+                <div className="text-4xl mb-3">{item.icon}</div>
+                <div className="font-light text-lg">{item.name}</div>
+                <div className="text-sm text-white/70">{item.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
