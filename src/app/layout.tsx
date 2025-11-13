@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Takl to AI",
-  description: "Ask me a question",
+  description: "Ask me a question...",
 };
 
 export default function RootLayout({
