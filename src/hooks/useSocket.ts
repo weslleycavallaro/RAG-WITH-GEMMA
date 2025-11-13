@@ -1,0 +1,31 @@
+import { useEffect, useState } from 'react';
+import { io, Socket } from 'socket.io-client';
+
+export const useSocket = () => {
+    const [socket, setSocket] = useState<Socket | null>(null);
+    const [isConnected, setIsConnected] = useState(false);
+
+    useEffect(() => {
+        const socketInstance = io(process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001', {
+            transports: ['websocket'],
+        });
+
+        socketInstance.on('connect', () => {
+            console.log('Connected to server');
+            setIsConnected(true);
+        });
+
+        socketInstance.on('disconnect', () => {
+            console.log('Disconnected from server');
+            setIsConnected(false);
+        });
+
+        setSocket(socketInstance);
+
+        return () => {
+            socketInstance.close();
+        };
+    }, []);
+
+    return { socket, isConnected };
+};
