@@ -62,16 +62,15 @@ export default function Page() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { icon: "", name: "Next.js", desc: "Frontend" },
-              { icon: "", name: "NestJS", desc: "Backend" },
-              { icon: "", name: "ChromaDB", desc: "Vector Store" },
-              { icon: "", name: "Gemma 3", desc: "LLM Local" },
+              { name: "Next.js", desc: "Frontend" },
+              { name: "NestJS", desc: "Backend" },
+              { name: "ChromaDB", desc: "Vector Store" },
+              { name: "Gemma 3", desc: "LLM Local" },
             ].map((item) => (
               <div
                 key={item.name}
                 className="backdrop-blur-sm border-t border-white/20  rounded-2xl p-6 shadow-md text-white"
               >
-                <div className="text-4xl mb-3">{item.icon}</div>
                 <div className="font-light text-lg">{item.name}</div>
                 <div className="text-sm text-white/70">{item.desc}</div>
               </div>
